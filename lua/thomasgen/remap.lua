@@ -29,8 +29,12 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 -- This is going to get me cancelled
 -- vim.keymap.set("i", "<C-c>", "<Esc>")
 
+-- Disable quitting with Q
 vim.keymap.set("n", "Q", "<nop>")
+
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Formatting
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
