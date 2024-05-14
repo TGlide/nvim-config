@@ -37,6 +37,7 @@ vim.keymap.set("n", "Q", "<nop>")
 -- Formatting
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
+    vim.cmd("Neoformat")
 end)
 
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

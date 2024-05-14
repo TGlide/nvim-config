@@ -49,4 +49,7 @@ require("lazy").setup({
         },
         config = true
     },
+
+    -- Formatting
+    'sbdchd/neoformat',
 })
