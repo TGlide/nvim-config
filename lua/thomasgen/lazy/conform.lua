@@ -1,15 +1,25 @@
 return {
     "stevearc/conform.nvim",
-
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-        require("conform").setup({
+        local conform = require("conform")
+
+        conform.setup({
             formatters_by_ft = {
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescriptreact = { "prettier" },
+                svelte = { "prettier" },
+                vue = { "prettier" },
+                css = { "prettier" },
+                html = { "prettier" },
+                json = { "prettier" },
+                yaml = { "prettier" },
+                markdown = { "prettier" },
+                graphql = { "prettier" },
                 lua = { "stylua" },
-                -- Conform will run multiple formatters sequentially
                 python = { "isort", "black" },
-                -- Use a sub-list to run only the first available formatter
-                --javascript = { "eslint", { "prettierd", "prettier" } },
-                javascript = { "eslint_d", },
             },
         })
 
@@ -25,5 +35,4 @@ return {
             require("conform").format({ async = true, lsp_fallback = true, range = range })
         end, { range = true })
     end
-
 }
