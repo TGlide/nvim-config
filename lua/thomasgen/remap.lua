@@ -36,7 +36,7 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- Formatting
 vim.keymap.set("n", "<leader>f", function()
-    -- vim.lsp.buf.format()
+    --vim.lsp.buf.format()
     vim.cmd("Format")
 end)
 
