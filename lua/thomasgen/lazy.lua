@@ -51,5 +51,8 @@ require("lazy").setup({
     },
 
     -- Formatting
-    'sbdchd/neoformat',
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    }
 })
