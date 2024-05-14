@@ -13,12 +13,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Colors
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-    { "rose-pine/neovim", name = "rose-pine" },
-    
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "rose-pine/neovim",                name = "rose-pine" },
+
     -- File navigation
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.6',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.6',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     'theprimeagen/harpoon',
@@ -26,21 +27,21 @@ require("lazy").setup({
     'mbbill/undotree',
 
     -- LSP Zero
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
-    {'L3MON4D3/LuaSnip'},
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'L3MON4D3/LuaSnip' },
 
     -- Git
     -- 'tpope/vim-fugitive',
     {
         "NeogitOrg/neogit",
         dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "sindrets/diffview.nvim",        -- optional - Diff integration
+            "nvim-lua/plenary.nvim",  -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
 
             -- Only one of these is needed, not both.
             "nvim-telescope/telescope.nvim", -- optional
