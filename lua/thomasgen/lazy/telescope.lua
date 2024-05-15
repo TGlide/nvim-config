@@ -28,6 +28,9 @@ return {
         vim.keymap.set('n', '<leader>ps', function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
+        vim.keymap.set('n', '<leader>ls', function()
+            builtin.grep_string({ search = vim.fn.input("Grep > "), search_dirs = { vim.fn.expand('%:p') } })
+        end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     end
 }
