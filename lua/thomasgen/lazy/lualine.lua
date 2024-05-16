@@ -47,6 +47,7 @@ return {
 
         local function heart()
             return [[♥ ]]
+            --return [[󰋑]]
         end
 
         -- custom theme

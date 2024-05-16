@@ -14,13 +14,20 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- greatest remap ever - paste without putting in register
-vim.keymap.set("x", "<leader>p", "\"_dP")
+-- Not needed in latest neovim, just use Shift P
+-- vim.keymap.set("x", "<leader>p", "\"_dP")
+
+-- Paste from system clipboard
+vim.keymap.set("n", "<leader>pc", "\"+p")
 
 -- next greatest remap ever : asbjornHaland
 -- Yank to system clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
+
+--- Paste from system clipboard when on insert mode
+vim.keymap.set("i", "<C-v>", "<Esc>\"+pa")
 
 -- Delete without going into register
 vim.keymap.set("n", "<leader>d", "\"_d")
