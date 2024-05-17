@@ -62,7 +62,7 @@ end)
 --vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Replace word
-vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+vim.keymap.set("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Window navigation
@@ -73,3 +73,6 @@ vim.keymap.set("n", "<leader>wj", "<C-w>j")
 vim.keymap.set("n", "<leader>wk", "<C-w>k")
 vim.keymap.set("n", "<leader>wl", "<C-w>l")
 vim.keymap.set("n", "<leader>wq", "<C-w>q")
+
+-- Safe file
+vim.keymap.set("n", "<leader>sf", ":w<CR>")
