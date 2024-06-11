@@ -70,10 +70,16 @@ vim.keymap.set("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left
 -- Window navigation
 vim.keymap.set("n", "<leader>ws", "<C-w>s")
 vim.keymap.set("n", "<leader>wv", "<C-w>v")
+
 vim.keymap.set("n", "<leader>wh", "<C-w>h")
+vim.keymap.set("n", "<leader>w<Left>", "<C-w>h")
 vim.keymap.set("n", "<leader>wj", "<C-w>j")
+vim.keymap.set("n", "<leader>w<Down>", "<C-w>j")
 vim.keymap.set("n", "<leader>wk", "<C-w>k")
+vim.keymap.set("n", "<leader>w<Up>", "<C-w>k")
 vim.keymap.set("n", "<leader>wl", "<C-w>l")
+vim.keymap.set("n", "<leader>w<Right>", "<C-w>l")
+
 vim.keymap.set("n", "<leader>wq", "<C-w>q")
 
 -- Safe file
