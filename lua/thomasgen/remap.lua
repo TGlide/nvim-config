@@ -84,3 +84,10 @@ vim.keymap.set("n", "<leader>wq", "<C-w>q")
 
 -- Safe file
 vim.keymap.set("n", "<leader>sf", ":w<CR>")
+
+-- close quickfix menu after selecting choice
+vim.api.nvim_create_autocmd(
+	"FileType", {
+		pattern = { "qf" },
+		command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]]
+	})
