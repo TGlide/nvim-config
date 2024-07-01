@@ -38,8 +38,6 @@ return {
 			},
 		})
 
-
-
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
@@ -131,7 +129,11 @@ return {
 				{ name = 'luasnip' }, -- For luasnip users.
 			}, {
 				{ name = 'buffer' },
-			})
+			}),
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 		})
 
 		vim.diagnostic.config({
@@ -145,5 +147,17 @@ return {
 				prefix = "",
 			},
 		})
+
+
+		-- Borders
+		vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+			vim.lsp.handlers.hover,
+			{ border = 'rounded' }
+		)
+
+		vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+			vim.lsp.handlers.signature_help,
+			{ border = 'rounded' }
+		)
 	end
 }
