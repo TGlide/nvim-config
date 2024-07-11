@@ -25,10 +25,12 @@ return {
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end)
+		-- Project search
 		vim.keymap.set('n', '<leader>ps', function()
-			builtin.live_grep()
-			-- builtin.grep_string({ search = vim.fn.input("Grep > ") })
+			-- builtin.live_grep()
+			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
+		-- Local search
 		vim.keymap.set('n', '<leader>ls', function()
 			builtin.grep_string({ search = vim.fn.input("Grep > "), search_dirs = { vim.fn.expand('%:p') } })
 		end)
