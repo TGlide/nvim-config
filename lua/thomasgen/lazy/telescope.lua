@@ -15,6 +15,7 @@ return {
 		})
 
 		local builtin = require('telescope.builtin')
+		vim.keymap.set('n', '<leader>t', ':Telescope<CR>', {})
 		vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 		vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
 		vim.keymap.set('n', '<leader>pws', function()
@@ -30,10 +31,16 @@ return {
 			-- builtin.live_grep()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
+		-- Project search with regex
+		vim.keymap.set('n', '<leader>pR', function()
+			builtin.grep_string({ search = vim.fn.input("Grep > "), use_regex = true })
+		end)
 		-- Local search
 		vim.keymap.set('n', '<leader>ls', function()
 			builtin.grep_string({ search = vim.fn.input("Grep > "), search_dirs = { vim.fn.expand('%:p') } })
 		end)
 		vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+		-- Resume
+		vim.keymap.set('n', '<leader>pr', builtin.resume, {})
 	end
 }
