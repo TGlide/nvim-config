@@ -82,6 +82,9 @@ vim.keymap.set("n", "<leader>w<Right>", "<C-w>l")
 
 vim.keymap.set("n", "<leader>wq", "<C-w>q")
 
+-- Refresh buffer
+vim.keymap.set("n", "<leader>rf", ":e<CR>")
+
 -- Safe file
 vim.keymap.set("n", "<leader>sf", ":w<CR>")
 
