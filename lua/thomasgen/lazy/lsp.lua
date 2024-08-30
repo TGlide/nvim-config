@@ -174,6 +174,9 @@ return {
 						completion = {
 							callSnippet = "Replace",
 						},
+						diagnostics = {
+							globals = { "vim" },
+						},
 						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 						-- diagnostics = { disable = { 'missing-fields' } },
 					},
@@ -207,6 +210,57 @@ return {
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					require("lspconfig")[server_name].setup(server)
 				end,
+			},
+		})
+
+		-- Setup specific LSPs
+		local mason_registry = require("mason-registry")
+		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+			.. "/node_modules/@vue/language-server"
+
+		require("lspconfig").tsserver.setup({
+			init_options = {
+				plugins = {
+					{
+						-- this happneed to be installed, maybe it does not need to be added manually but if it does not work then try to install it
+						name = "@vue/typescript-plugin",
+						location = vue_language_server_path,
+						languages = { "vue" },
+					},
+				},
+			},
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "svelte" },
+			commands = {
+				OrganizeImports = {
+					function()
+						local params = {
+							command = "_typescript.organizeImports",
+							arguments = { vim.api.nvim_buf_get_name(0) },
+							title = "",
+						}
+						vim.lsp.buf.execute_command(params)
+					end,
+					description = "Organize Imports",
+				},
+			},
+		})
+		require("lspconfig").volar.setup({})
+
+		-- Styling
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+		vim.lsp.handlers["textDocument/signatureHelp"] =
+			vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+		vim.diagnostic.config({
+			-- update_in_insert = true,
+			float = {
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+				source = "always",
+				header = "",
+				prefix = "",
 			},
 		})
 	end,
