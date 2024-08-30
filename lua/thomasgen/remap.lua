@@ -94,3 +94,6 @@ vim.api.nvim_create_autocmd(
 		pattern = { "qf" },
 		command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]]
 	})
+
+-- Exit terminal insert mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
