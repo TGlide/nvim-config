@@ -37,7 +37,7 @@ return {
 					vim.lsp.buf.hover()
 				end, "Show documentation for symbol under cursor")
 
-				map("rr", function()
+				map("<leader>rr", function()
 					vim.lsp.buf.references()
 				end, "[R]eferences")
 
@@ -59,7 +59,7 @@ return {
 
 				-- Fuzzy find all the symbols in your current workspace.
 				--  Similar to document symbols, except searches over your entire project.
-				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+				--map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 				-- Rename the variable under your cursor.
 				--  Most Language Servers support renaming across files, etc.
@@ -142,6 +142,10 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+		local mason_registry = require("mason-registry")
+		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+			.. "/node_modules/@vue/language-server"
+
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 		--
@@ -164,6 +168,35 @@ return {
 			-- But for many setups, the LSP (`tsserver`) will work just fine
 			-- tsserver = {},
 			--
+			--
+			tsserver = {
+				init_options = {
+					plugins = {
+						{
+							-- this happneed to be installed, maybe it does not need to be added manually but if it does not work then try to install it
+							name = "@vue/typescript-plugin",
+							location = vue_language_server_path,
+							languages = { "vue" },
+						},
+					},
+				},
+				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				commands = {
+					OrganizeImports = {
+						function()
+							local params = {
+								command = "_typescript.organizeImports",
+								arguments = { vim.api.nvim_buf_get_name(0) },
+								title = "",
+							}
+							vim.lsp.buf.execute_command(params)
+						end,
+						description = "Organize Imports",
+					},
+				},
+			},
+
+			volar = {},
 
 			lua_ls = {
 				-- cmd = {...},
@@ -214,37 +247,6 @@ return {
 		})
 
 		-- Setup specific LSPs
-		local mason_registry = require("mason-registry")
-		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-			.. "/node_modules/@vue/language-server"
-
-		require("lspconfig").tsserver.setup({
-			init_options = {
-				plugins = {
-					{
-						-- this happneed to be installed, maybe it does not need to be added manually but if it does not work then try to install it
-						name = "@vue/typescript-plugin",
-						location = vue_language_server_path,
-						languages = { "vue" },
-					},
-				},
-			},
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "svelte" },
-			commands = {
-				OrganizeImports = {
-					function()
-						local params = {
-							command = "_typescript.organizeImports",
-							arguments = { vim.api.nvim_buf_get_name(0) },
-							title = "",
-						}
-						vim.lsp.buf.execute_command(params)
-					end,
-					description = "Organize Imports",
-				},
-			},
-		})
-		require("lspconfig").volar.setup({})
 
 		-- Styling
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
