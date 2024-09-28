@@ -1,6 +1,7 @@
 return {
 	"jake-stewart/multicursor.nvim",
 	branch = "1.0",
+	enabled = true,
 	config = function()
 		local mc = require("multicursor-nvim")
 
@@ -55,7 +56,7 @@ return {
 		end)
 
 		-- Align cursor columns.
-		vim.keymap.set("n", "<leader>a", mc.alignCursors)
+		-- vim.keymap.set("n", "<leader>a", mc.alignCursors)
 
 		-- Split visual selections by regex.
 		vim.keymap.set("v", "S", mc.splitCursors)
