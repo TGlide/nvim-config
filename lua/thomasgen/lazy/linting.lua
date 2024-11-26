@@ -1,5 +1,6 @@
 return {
 	"mfussenegger/nvim-lint",
+	enabled = false,
 	event = {
 		"BufReadPre",
 		"BufNewFile",
@@ -15,7 +16,7 @@ return {
 			svelte = { "eslint" },
 			vue = { "eslint" },
 			python = { "pylint" },
-			astro = { "eslint" }
+			astro = { "eslint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
