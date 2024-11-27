@@ -33,6 +33,8 @@ return {
 				--  To jump back, press <C-t>.
 				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
+				map("<leader>lr", ":LspRestart<CR>", "Restart LSP")
+
 				map("K", function()
 					vim.lsp.buf.hover()
 				end, "Show documentation for symbol under cursor")
