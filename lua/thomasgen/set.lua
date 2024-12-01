@@ -29,3 +29,5 @@ vim.opt.smartcase = true
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.inccommand = "nosplit"
+
+vim.opt.cursorline = true

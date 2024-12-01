@@ -64,32 +64,32 @@ return {
 			normal = {
 				a = { bg = p.rose, fg = p.base, gui = "bold" },
 				b = { bg = p.overlay, fg = p.rose },
-				c = { bg = '#2C232E', fg = p.text },
+				c = { bg = p.surface, fg = p.subtle },
 			},
 			insert = {
 				a = { bg = p.foam, fg = p.base, gui = "bold" },
 				b = { bg = p.overlay, fg = p.foam },
-				c = { bg = '#252834', fg = p.text },
+				--c = { bg = "#252834", fg = p.text },
 			},
 			visual = {
 				a = { bg = p.iris, fg = p.base, gui = "bold" },
 				b = { bg = p.overlay, fg = p.iris },
-				c = { bg = '#292436', fg = p.text },
+				--c = { bg = "#292436", fg = p.text },
 			},
 			replace = {
 				a = { bg = p.pine, fg = p.base, gui = "bold" },
 				b = { bg = p.overlay, fg = p.pine },
-				c = { bg = '#1C2231', fg = p.text },
+				-- c = { bg = "#1C2231", fg = p.text },
 			},
 			command = {
 				a = { bg = p.love, fg = p.base, gui = "bold" },
 				b = { bg = p.overlay, fg = p.love },
-				c = { bg = '#2C1F2E', fg = p.text },
+				-- c = { bg = "#2C1F2E", fg = p.text },
 			},
 			inactive = {
 				a = { bg = bg_base, fg = p.muted, gui = "bold" },
 				b = { bg = bg_base, fg = p.muted },
-				c = { bg = bg_base, fg = p.muted },
+				-- c = { bg = bg_base, fg = p.muted },
 			},
 		}
 
@@ -102,9 +102,9 @@ return {
 			return function(str)
 				local win_width = vim.fn.winwidth(0)
 				if hide_width and win_width < hide_width then
-					return ''
+					return ""
 				elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-					return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
+					return str:sub(1, trunc_len) .. (no_ellipsis and "" or "...")
 				end
 				return str
 			end
@@ -134,12 +134,12 @@ return {
 					{
 						"location",
 						separator = { left = "" },
-						left_padding = 2
+						left_padding = 2,
 					},
 					{
 						heart,
 						separator = { right = "" },
-					}
+					},
 				},
 			},
 			extensions = { "nvim-tree", "fzf" },
