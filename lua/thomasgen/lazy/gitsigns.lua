@@ -3,7 +3,7 @@ return {
 	config = function(bufnr)
 		require("gitsigns").setup({
 			on_attach = function(bufnr)
-				local gitsigns = require('gitsigns')
+				local gitsigns = require("gitsigns")
 
 				local function map(mode, l, r, opts)
 					opts = opts or {}
@@ -36,16 +36,16 @@ return {
 				-- map('n', '<leader>hS', gitsigns.stage_buffer)
 				-- map('n', '<leader>hu', gitsigns.undo_stage_hunk)
 				-- map('n', '<leader>hR', gitsigns.reset_buffer)
-				map('n', '<leader>gp', gitsigns.preview_hunk)
+				map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
 				-- map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
 				-- map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-				map('n', '<leader>gd', gitsigns.diffthis)
+				map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff this" })
 				-- map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
 				-- map('n', '<leader>td', gitsigns.toggle_deleted)
 
 				-- -- Text object
 				-- map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-			end
+			end,
 		})
-	end
+	end,
 }
