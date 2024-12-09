@@ -64,7 +64,7 @@ return {
 			normal = {
 				a = { bg = p.rose, fg = p.base, gui = "bold" },
 				b = { bg = p.overlay, fg = p.rose },
-				c = { bg = p.surface, fg = p.subtle },
+				c = { bg = p.surface, fg = p.text },
 			},
 			insert = {
 				a = { bg = p.foam, fg = p.base, gui = "bold" },
