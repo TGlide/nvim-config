@@ -4,43 +4,43 @@ return {
 	tag = "0.1.6",
 
 	dependencies = {
-		"nvim-lua/plenary.nvim"
+		"nvim-lua/plenary.nvim",
 	},
 
 	config = function()
-		require('telescope').setup({
+		require("telescope").setup({
 			pickers = {
-				find_files = { hidden = true }
-			}
+				find_files = { hidden = true },
+			},
 		})
 
-		local builtin = require('telescope.builtin')
-		vim.keymap.set('n', '<leader>t', ':Telescope<CR>', {})
-		vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-		vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
-		vim.keymap.set('n', '<leader>pws', function()
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "<leader>t", ":Telescope<CR>", {})
+		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Find [F]iles" })
+		vim.keymap.set("n", "<leader>pg", builtin.git_files, { desc = "Find [G]it Files" })
+		vim.keymap.set("n", "<leader>pws", function()
 			local word = vim.fn.expand("<cword>")
 			builtin.grep_string({ search = word })
 		end)
-		vim.keymap.set('n', '<leader>pWs', function()
+		vim.keymap.set("n", "<leader>pWs", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end)
 		-- Project search
-		vim.keymap.set('n', '<leader>ps', function()
+		vim.keymap.set("n", "<leader>ps", function()
 			-- builtin.live_grep()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
 		-- Project search with regex
-		vim.keymap.set('n', '<leader>pR', function()
+		vim.keymap.set("n", "<leader>pR", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > "), use_regex = true })
 		end)
 		-- Local search
-		vim.keymap.set('n', '<leader>ls', function()
-			builtin.grep_string({ search = vim.fn.input("Grep > "), search_dirs = { vim.fn.expand('%:p') } })
+		vim.keymap.set("n", "<leader>ls", function()
+			builtin.grep_string({ search = vim.fn.input("Grep > "), search_dirs = { vim.fn.expand("%:p") } })
 		end)
-		vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
 		-- Resume
-		vim.keymap.set('n', '<leader>pr', builtin.resume, {})
-	end
+		vim.keymap.set("n", "<leader>pr", builtin.resume, {})
+	end,
 }
