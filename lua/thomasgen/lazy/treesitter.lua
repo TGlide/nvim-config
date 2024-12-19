@@ -5,8 +5,17 @@ return {
 		require("nvim-treesitter.configs").setup({
 			-- A list of parser names, or "all"
 			ensure_installed = {
-				"vimdoc", "javascript", "typescript", "c", "lua", "rust",
-				"jsdoc", "bash", "svelte", "vue", "css"
+				"vimdoc",
+				"javascript",
+				"typescript",
+				"c",
+				"lua",
+				"rust",
+				"jsdoc",
+				"bash",
+				"svelte",
+				"vue",
+				"css",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -17,7 +26,7 @@ return {
 			auto_install = true,
 
 			indent = {
-				enable = true
+				enable = true,
 			},
 
 			highlight = {
@@ -46,10 +55,9 @@ return {
 		vim.filetype.add({
 			extension = {
 				mdx = "mdx",
-			}
+			},
 		})
 
-		local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
-		ft_to_parser.mdx = "markdown"
-	end
+		vim.treesitter.language.register("mdx", "markdown")
+	end,
 }

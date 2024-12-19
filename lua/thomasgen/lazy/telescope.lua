@@ -36,7 +36,7 @@ return {
 
 		-- Project search (live grep)
 		vim.keymap.set("n", "<leader>plg", function()
-			builtin.live_grep({ search_dirs = { vim.fn.expand("%:p") } })
+			builtin.live_grep()
 		end, { desc = "[P]roject [L]ive [G]rep" })
 
 		-- Project search with regex

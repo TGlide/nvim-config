@@ -13,14 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +204 lua/thomasgen/lazy/mini.lua
+badd +198 lua/thomasgen/lazy/mini.lua
 badd +1 lua/thomasgen/lazy/telescope.lua
-badd +4 lua/thomasgen/lazy/colors.lua
+badd +3 lua/thomasgen/lazy/colors.lua
+badd +1 ~/.config/nvim/lua/thomasgen/lazy/alpha.lua
 argglobal
 %argdel
-edit lua/thomasgen/lazy/colors.lua
+edit ~/.config/nvim/lua/thomasgen/lazy/alpha.lua
 argglobal
-balt lua/thomasgen/lazy/telescope.lua
+balt lua/thomasgen/lazy/mini.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -31,11 +32,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 3 - ((2 * winheight(0) + 29) / 59)
+let s:l = 10 - ((9 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
+keepjumps 10
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
