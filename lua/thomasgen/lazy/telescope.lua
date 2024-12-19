@@ -22,25 +22,38 @@ return {
 			local word = vim.fn.expand("<cword>")
 			builtin.grep_string({ search = word })
 		end)
+
 		vim.keymap.set("n", "<leader>pWs", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end)
+
 		-- Project search
 		vim.keymap.set("n", "<leader>ps", function()
 			-- builtin.live_grep()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
-		end)
+		end, { desc = "[P]roject [S]earch" })
+
+		-- Project search (live grep)
+		vim.keymap.set("n", "<leader>plg", function()
+			builtin.live_grep({ search_dirs = { vim.fn.expand("%:p") } })
+		end, { desc = "[P]roject [L]ive [G]rep" })
+
 		-- Project search with regex
 		vim.keymap.set("n", "<leader>pR", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > "), use_regex = true })
-		end)
+		end, { desc = "Project [R]egex Search" })
+
 		-- Local search
 		vim.keymap.set("n", "<leader>ls", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > "), search_dirs = { vim.fn.expand("%:p") } })
-		end)
+		end, { desc = "[L]ocal [S]earch" })
+
 		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
+
 		-- Resume
 		vim.keymap.set("n", "<leader>pr", builtin.resume, {})
+
+		vim.keymap.set("n", "<leader>ch", builtin.command_history, { desc = "[C]ommand [H]istory" })
 	end,
 }

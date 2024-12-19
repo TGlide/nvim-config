@@ -2,8 +2,7 @@ return {
 	"echasnovski/mini.nvim",
 	version = false,
 	config = function()
-		local miniai = require("mini.ai")
-		miniai.setup({
+		require("mini.ai").setup({
 			-- Table with textobject id as fields, textobject specification as values.
 			-- Also use this to disable builtin textobjects. See |MiniAi.config|.
 			custom_textobjects = nil,
@@ -112,8 +111,7 @@ return {
 			},
 		})
 
-		local minicomment = require("mini.comment")
-		minicomment.setup({
+		require("mini.comment").setup({
 			-- Options which control module behavior
 			options = {
 				-- Function to compute custom 'commentstring' (optional)
@@ -198,6 +196,14 @@ return {
 				miniclue.gen_clues.windows(),
 				miniclue.gen_clues.z(),
 			},
+		})
+
+		local starter = require("mini.starter")
+		starter.setup()
+
+		local sessions = require("mini.sessions")
+		sessions.setup({
+			autoread = true,
 		})
 	end,
 }
