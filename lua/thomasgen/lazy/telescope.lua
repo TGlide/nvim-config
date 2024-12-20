@@ -55,5 +55,6 @@ return {
 		vim.keymap.set("n", "<leader>pr", builtin.resume, {})
 
 		vim.keymap.set("n", "<leader>ch", builtin.command_history, { desc = "[C]ommand [H]istory" })
+		vim.keymap.set("n", "<leader>cc", builtin.commands, { desc = "[C]ommands" })
 	end,
 }

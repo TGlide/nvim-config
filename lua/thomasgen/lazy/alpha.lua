@@ -94,22 +94,23 @@ return {
 				[[ WWWWVVVVVVVVVVVVVVVVWWWWWWWWWWWWWWWWVVVVVVVVVVBBBBBBBBWWWWBBBBBBWWWWWWWWWWWWWWBBBBBBWWWWBBBBWWWWWWWWWW ]],
 			}
 
-			local colors = {
-				["W"] = { fg = "#1e1e2e" }, -- Using Base color
-				["C"] = { fg = "#cdd6f4" }, -- Using Text color
-				["B"] = { fg = "#11111b" }, -- Using Crust color
-				["R"] = { fg = "#f38ba8" }, -- Using Red color
-				["O"] = { fg = "#fab387" }, -- Using Peach color
-				["Y"] = { fg = "#f9e2af" }, -- Using Yellow color
-				["G"] = { fg = "#a6e3a1" }, -- Using Green color
-				["U"] = { fg = "#89b4fa" }, -- Using Blue color
-				["P"] = { fg = "#f9e2af" }, -- Using Yellow color (as specified in original)
-				["H"] = { fg = "#f5c2e7" }, -- Using Pink color
-				["F"] = { fg = "#f38ba8" }, -- Using Red color
-				["M"] = { fg = "#6c7086" }, -- Using Overlay0 color
-				["V"] = { fg = "#b4befe" }, -- Using Lavender color
-			}
+			local palette = require("rose-pine.palette")
 
+			local colors = {
+				["W"] = { fg = palette.base },
+				["C"] = { fg = palette.text },
+				["B"] = { fg = palette.surface },
+				["R"] = { fg = palette.love },
+				["O"] = { fg = palette.rose },
+				["Y"] = { fg = palette.gold },
+				["G"] = { fg = palette.foam },
+				["U"] = { fg = palette.pine },
+				["P"] = { fg = "#d7c08d" }, -- Using Yellow color (as specified in original)
+				["H"] = { fg = palette.iris },
+				["F"] = { fg = palette.love },
+				["M"] = { fg = palette.subtle },
+				["V"] = { fg = palette.iris },
+			}
 			dashboard.section.header.val = header
 			dashboard.section.header.opts = {
 				hl = colorize(header, color_map, colors),
