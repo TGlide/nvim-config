@@ -71,7 +71,7 @@ return {
 			desc = "Lazygit Log (cwd)",
 		},
 		{
-			"<leader>un",
+			"<leader>dn",
 			function()
 				Snacks.notifier.hide()
 			end,
