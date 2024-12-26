@@ -14,6 +14,7 @@ return {
 				"jsdoc",
 				"bash",
 				"svelte",
+				"astro",
 				"vue",
 				"css",
 			},

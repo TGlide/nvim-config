@@ -25,7 +25,7 @@ return {
 			},
 
 			-- Number of lines within which textobject is searched
-			n_lines = 50,
+			n_lines = 1000,
 
 			-- How to search for object (first inside current line, then inside
 			-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
@@ -213,5 +213,28 @@ return {
 		-- sessions.setup({
 		-- 	autoread = true,
 		-- })
+
+		require("mini.move").setup({
+			-- Module mappings. Use `''` (empty string) to disable one.
+			mappings = {
+				-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+				left = "<M-left>",
+				right = "<M-right>",
+				down = "<M-down>",
+				up = "<M-up>",
+
+				-- Move current line in Normal mode
+				line_left = "<M-left>",
+				line_right = "<M-right>",
+				line_down = "<M-down>",
+				line_up = "<M-up>",
+			},
+
+			-- Options which control moving behavior
+			options = {
+				-- Automatically reindent selection during linewise vertical move
+				reindent_linewise = true,
+			},
+		})
 	end,
 }
